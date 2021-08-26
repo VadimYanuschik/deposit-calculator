@@ -4,7 +4,7 @@ export const CalculatorContainer = styled.div`
   background-color: #5992FF;
   width: 100%;
   max-width: 505px;
-  margin: 60px auto 0 auto;
+  margin: 30px auto 0 auto;
   padding: 20px;
 `
 

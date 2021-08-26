@@ -5,6 +5,7 @@ export const CheckboxContainer = styled.div`
   display: flex;
   align-items: center;
   align-self: ${props => props.leftAlign ? "flex-start" : ''};
+  user-select: none;
   
   
   label {
