@@ -8,4 +8,6 @@ export const SelectStyles = styled.select`
   padding: 15px 17px;
   border: none;
   color: ${props => props.isSelect ? '#000' : 'gray'};
+  
+  cursor: pointer;
 `
