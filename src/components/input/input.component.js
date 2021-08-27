@@ -1,9 +1,9 @@
 import React from 'react';
 import {InputStyles} from './input.styles';
 
-function Input({placeholder}) {
+function Input({placeholder, ...otherProps}) {
     return (
-        <InputStyles type="text" placeholder={placeholder}/>
+        <InputStyles {...otherProps} pattern="[0-9]*" type="text" placeholder={placeholder}/>
     );
 }
 

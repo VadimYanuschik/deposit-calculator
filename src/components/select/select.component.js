@@ -1,13 +1,9 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {SelectStyles} from './select.styles';
 
-function Select({placeholder}) {
-    const [isSelect, setIsSelect] = useState(false);
-    const onChange = e => {
-        setIsSelect(true)
-    }
+function Select({placeholder, ...otherProps}) {
     return (
-        <SelectStyles isSelect={isSelect} defaultValue={'DEFAULT'} onChange={onChange} name="currency" id="">
+        <SelectStyles {...otherProps} defaultValue={'DEFAULT'} name="currency" id="">
             <option value="DEFAULT" disabled>{placeholder}</option>
             <option value="BYN">BYN</option>
             <option value="USD">USD</option>

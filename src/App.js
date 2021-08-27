@@ -9,7 +9,7 @@ function App() {
             <GlobalStyle/>
             <Header/>
             <Calculator/>
-            <CalculationsBox/>
+            <CalculationsBox isCalculationsComplete={false}/>
         </div>
     );
 }

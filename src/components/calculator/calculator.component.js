@@ -1,11 +1,23 @@
-import React from 'react';
+import React, {useState} from 'react';
+import {connect} from 'react-redux';
 import {CalculatorContainer, FormContainer, TitleContainer, TitleText} from './calculator.styles';
 import Input from '../input/input.component';
 import Checkbox from '../checkbox/checkbox.component';
 import Button from '../button/button.compoent';
 import Select from '../select/select.component';
+import {startCalculations} from '../../redux/deposit/deposit.actions';
 
-function Calculator() {
+function Calculator({startCalculations}) {
+    const [depositAmount, setDepositAmount] = useState('');
+    const [currency, setCurrency] = useState('');
+    const [monthCount, setMonthCount] = useState('');
+    const [interestRate, setInterestRate] = useState('');
+    const [withCapitalization, setWithCapitalization] = useState(false);
+
+    const handleClick = () => {
+        startCalculations({depositAmount, currency, monthCount, interestRate, withCapitalization})
+    }
+
     return (
         <CalculatorContainer>
             <TitleContainer>
@@ -13,15 +25,19 @@ function Calculator() {
                 <TitleText>Bank</TitleText>
             </TitleContainer>
             <FormContainer>
-                <Input placeholder={'Сумма вклада'}/>
-                <Select placeholder={'Выберите валюту'}/>
-                <Input placeholder={'Кол-во месяцев'}/>
-                <Input placeholder={'Годовая ставка, %'}/>
-                <Checkbox id={'form-button'} labelText={'С капитализацией'}/>
-                <Button text={'Рассчитать'}/>
+                <Input onChange={e => {setDepositAmount(e.target.value)}} value={depositAmount} placeholder={'Сумма вклада'}/>
+                <Select onChange={e => {setCurrency(e.target.value)}} placeholder={'Выберите валюту'}/>
+                <Input onChange={e => setMonthCount(e.target.value)} value={monthCount} placeholder={'Кол-во месяцев'}/>
+                <Input onChange={e => setInterestRate(e.target.value)} value={interestRate} placeholder={'Годовая ставка, %'}/>
+                <Checkbox onChange={e => setWithCapitalization(!withCapitalization)} checked={withCapitalization} id={'form-button'} labelText={'С капитализацией'}/>
+                <Button onClick={handleClick} text={'Рассчитать'}/>
             </FormContainer>
         </CalculatorContainer>
     );
 }
 
-export default Calculator;
+const mapDispatchToProps = dispatch => ({
+    startCalculations: depositData => dispatch(startCalculations(depositData))
+})
+
+export default connect(null, mapDispatchToProps)(Calculator);

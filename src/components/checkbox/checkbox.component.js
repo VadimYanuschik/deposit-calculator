@@ -1,10 +1,10 @@
 import React from 'react';
 import {CheckboxContainer} from './checkbox.styles';
 
-function Checkbox({id, labelText}) {
+function Checkbox({id, labelText, ...otherProps}) {
     return (
         <CheckboxContainer leftAlign>
-            <input id={id} type="checkbox"/>
+            <input {...otherProps} id={id} type="checkbox"/>
             <label htmlFor={id}>{labelText}</label>
         </CheckboxContainer>
     );

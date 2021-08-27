@@ -7,7 +7,5 @@ export const SelectStyles = styled.select`
   width: 100%;
   padding: 15px 17px;
   border: none;
-  color: ${props => props.isSelect ? '#000' : 'gray'};
-  
   cursor: pointer;
 `
