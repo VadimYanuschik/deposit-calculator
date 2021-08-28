@@ -1,20 +1,20 @@
 import DepositTypes from './deposit.types';
+import {makeCalculations} from './deposit.utils';
 
 const INITIAL_STATE = {
-    depositData: {
-        depositAmount: null,
-        currency: null,
-        monthCount: null,
-        interestRate: null,
-        withCapitalization: false
-    }
+    isCalculationsFinish: false,
+    depositData: {},
+    calculations: {}
 }
 
 const depositReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case DepositTypes.START_CALCULATIONS:
             return {
-                ...action.payload
+                ...state,
+                depositData: action.payload,
+                calculations: makeCalculations(action.payload),
+                isCalculationsFinish: true
             }
         default:
             return state

@@ -8,7 +8,7 @@ export const CalculationsBoxContainer = styled.div`
   color: #6D6D6D;
   padding: 18px 22px;
   line-height: 29px;
-  display: ${props => props.isCalculationsComplete ? 'block' : 'none'};
+  display: ${props => props.isCalculationsFinish ? 'block' : 'none'};
 `
 
 export const CalculatorFields = styled.div`
