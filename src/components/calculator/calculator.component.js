@@ -8,11 +8,11 @@ import Select from '../select/select.component';
 import {startCalculations} from '../../redux/deposit/deposit.actions';
 
 function Calculator({startCalculations}) {
-    const [depositAmount, setDepositAmount] = useState('');
-    const [currency, setCurrency] = useState('');
-    const [monthCount, setMonthCount] = useState('');
-    const [interestRate, setInterestRate] = useState('');
-    const [withCapitalization, setWithCapitalization] = useState(false);
+    const [depositAmount, setDepositAmount] = useState(150);
+    const [currency, setCurrency] = useState('BYN');
+    const [monthCount, setMonthCount] = useState(18);
+    const [interestRate, setInterestRate] = useState(18);
+    const [withCapitalization, setWithCapitalization] = useState(true);
 
     const handleClick = () => {
         startCalculations({depositAmount, currency, monthCount, interestRate, withCapitalization})

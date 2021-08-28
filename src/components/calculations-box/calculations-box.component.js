@@ -7,10 +7,10 @@ function CalculationsBox({isCalculationsFinish, calculations, depositAmount, cur
     return (
         <CalculationsBoxContainer isCalculationsFinish={isCalculationsFinish}>
             <CalculatorFields>
-                <CalculationLine>Сумма процентов без вычета налога: <Calculations>{amountWithTax} {currency}</Calculations></CalculationLine>
-                <CalculationLine>Общая суммма возврата: <Calculations>{amountTotal} {currency}</Calculations></CalculationLine>
-                <CalculationLine>Сумма процентов с вычетом процентного налога: <Calculations>{amountWithoutTax} {currency}</Calculations></CalculationLine>
                 <CalculationLine>Сумма вклада: <Calculations>{depositAmount} {currency}</Calculations></CalculationLine>
+                <CalculationLine>Общая суммма возврата: <Calculations>{amountTotal} {currency}</Calculations></CalculationLine>
+                <CalculationLine>Сумма процентов без вычета налога: <Calculations>{amountWithTax} {currency}</Calculations></CalculationLine>
+                <CalculationLine>Сумма процентов с вычетом процентного налога: <Calculations>{amountWithoutTax} {currency}</Calculations></CalculationLine>
                 <CalculationLine>Сумма вычтенного процентого налога: <Calculations>{amountOfTax} {currency}</Calculations></CalculationLine>
             </CalculatorFields>
         </CalculationsBoxContainer>
