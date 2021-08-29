@@ -30,3 +30,9 @@ export const TitleText = styled.h1`
   color: #FFEC43;
   line-height: 44px;
 `
+
+export const ErrorContainer = styled.span`
+  color: red;
+  font-weight: 500;
+  font-size: 16px;
+`
