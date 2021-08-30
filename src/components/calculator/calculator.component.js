@@ -41,9 +41,7 @@ function Calculator({startCalculations}) {
     }
 
     const inputValidator = () => {
-        console.log(depositAmount, monthCount, interestRate)
         if(depositAmount && monthCount && interestRate) {
-            console.log('exist')
             setInputError(false)
             return true
         } else {
@@ -53,8 +51,6 @@ function Calculator({startCalculations}) {
     }
 
     const handleLetters = (e) => {
-        // all inputs are required
-        // show calculations history
         e = e.replace(/[^0-9\\.]/g,'');
         if(e.split('.').length>2)
             e = e.replace(/\.+$/,"");

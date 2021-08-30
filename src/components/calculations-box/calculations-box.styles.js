@@ -15,9 +15,19 @@ export const CalculatorFields = styled.div`
 `
 
 export const CalculationLine = styled.p`
-    font-size: 16px;
+  font-size: 16px;
 `
 
 export const Calculations = styled.span`
-    font-weight: 500;
+  font-weight: 500;
+`
+
+export const ShowCalculationsButton = styled.a`
+  color: #e5d116;
+  text-decoration: underline;
+  cursor: pointer;
+`
+
+export const CalculationsHistory = styled.div`
+    display: ${props => props.hidden ? 'none' : 'block'};
 `
