@@ -5,23 +5,27 @@ export const makeCalculations = depositData => {
     const amountTotal = Number(depositAmount) + Number(amountWithTax)
     const amountWithoutTax = calculationsWithoutTax(amountWithTax)
     const amountOfTax = Number((amountWithTax - amountWithoutTax).toFixed(2))
-    console.log({amountWithTax, amountTotal, amountWithoutTax, amountOfTax, depositHistory})
     return {amountWithTax, amountTotal, amountWithoutTax, amountOfTax, depositHistory}
 }
 
 const calculationsWithTax = (depositAmount, monthCount, interestRate, withCapitalization) => {
     if(!withCapitalization) {
-        return {amountWithTax: Number((((depositAmount * interestRate * (monthCount * 31 / 365))) / 100)).toFixed(2)}
+        let amountWithTax = Number((((depositAmount * interestRate * (monthCount * 31 / 365))) / 100)).toFixed(2)
+        return {amountWithTax}
     }
-    let depositHistory = []
+
     let startDepositAmount = depositAmount
+    let depositHistory = [depositAmount]
+
     for (let i = 0; i < monthCount; i++) {
-        let currentMonthAmount = Number((depositAmount * interestRate * 31) / (365 * 100)).toFixed(2)
-        depositHistory.push(depositAmount)
+        let currentMonthAmount = Number((depositAmount * interestRate * 31) / (365 * 100))
         depositAmount = (Number(currentMonthAmount) + Number(depositAmount)).toFixed(2)
+        depositHistory.push(depositAmount)
     }
-    depositHistory.push(depositAmount)
-    return {amountWithTax: Number(depositAmount - startDepositAmount).toFixed(2), depositHistory}
+
+    let amountWithTax = Number(depositAmount - startDepositAmount).toFixed(2)
+
+    return {amountWithTax, depositHistory}
 }
 
 const calculationsWithoutTax = (amountWithTax) => {

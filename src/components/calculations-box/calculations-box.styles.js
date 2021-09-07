@@ -27,7 +27,3 @@ export const ShowCalculationsButton = styled.a`
   text-decoration: underline;
   cursor: pointer;
 `
-
-export const CalculationsHistory = styled.div`
-    display: ${props => props.hidden ? 'none' : 'block'};
-`

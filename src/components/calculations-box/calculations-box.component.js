@@ -5,9 +5,12 @@ import {
     Calculations,
     CalculationsBoxContainer,
     CalculatorFields,
-    ShowCalculationsButton,
-    CalculationsHistory
+    ShowCalculationsButton
 } from './calculations-box.styles';
+
+import CalculationsHistory from '../calculations-history/calculations-history.component';
+import {selectCalculations, selectDepositData, selectIsCalculationsFinish} from '../../redux/deposit/deposit.selectors';
+import {createStructuredSelector} from 'reselect';
 
 function CalculationsBox({isCalculationsFinish, calculations, depositData}) {
     const [calculationsHistory, setCalculationsHistory] = useState(true);
@@ -15,41 +18,33 @@ function CalculationsBox({isCalculationsFinish, calculations, depositData}) {
         setCalculationsHistory(!calculationsHistory)
     }
 
-    const {amountWithTax, amountTotal, amountWithoutTax, amountOfTax, depositHistory} = calculations
-    const {depositAmount, currency, interestRate, withCapitalization} = depositData
-    
+    const {amountWithTax, amountTotal, amountWithoutTax, amountOfTax} = calculations
+    const {depositAmount, currency, withCapitalization} = depositData
+
     return (
         <CalculationsBoxContainer isCalculationsFinish={isCalculationsFinish}>
             <CalculatorFields>
                 <CalculationLine>Сумма вклада: <Calculations>{depositAmount} {currency}</Calculations></CalculationLine>
-                <CalculationLine>Общая суммма
+                <CalculationLine>Общая сумма
                     возврата: <Calculations>{amountTotal} {currency}</Calculations></CalculationLine>
                 <CalculationLine>Сумма процентов без вычета
                     налога: <Calculations>{amountWithTax} {currency}</Calculations></CalculationLine>
                 <CalculationLine>Сумма процентов с вычетом процентного
                     налога: <Calculations>{amountWithoutTax} {currency}</Calculations></CalculationLine>
-                <CalculationLine>Сумма вычтенного процентого
+                <CalculationLine>Сумма вычтенного процентного
                     налога: <Calculations>{amountOfTax} {currency}</Calculations></CalculationLine>
             </CalculatorFields>
             {withCapitalization ?
                 <ShowCalculationsButton onClick={handleClick}>Полный расчет</ShowCalculationsButton> : null}
-            <CalculationsHistory hidden={calculationsHistory}>
-                {
-                    depositHistory && depositHistory.map((enroll, index, elements) => {
-                        if (!elements[index + 1]) return;
-                        return (<p key={index}>{index + 1}-я капитализация: {elements[index]} +
-                            ({elements[index]} * {interestRate} * 31) / (365 * 100)
-                            = {elements[index + 1]}</p>)
-                    })
-                }
-            </CalculationsHistory>
+            <CalculationsHistory hidden={calculationsHistory}/>
         </CalculationsBoxContainer>
     );
 }
 
-const mapStateToProps = ({deposit}) => {
-    const {isCalculationsFinish, calculations, depositData} = deposit
-    return {isCalculationsFinish, calculations, depositData}
-}
+const mapStateToProps = createStructuredSelector({
+    calculations: selectCalculations,
+    depositData: selectDepositData,
+    isCalculationsFinish: selectIsCalculationsFinish
+})
 
 export default connect(mapStateToProps)(CalculationsBox);
