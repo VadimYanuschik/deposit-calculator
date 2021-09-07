@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.js": "/deposit-calculator/static/js/main.da66f688.chunk.js",
+    "main.js.map": "/deposit-calculator/static/js/main.da66f688.chunk.js.map",
+    "runtime-main.js": "/deposit-calculator/static/js/runtime-main.7bab8b1d.js",
+    "runtime-main.js.map": "/deposit-calculator/static/js/runtime-main.7bab8b1d.js.map",
+    "static/js/2.b2658428.chunk.js": "/deposit-calculator/static/js/2.b2658428.chunk.js",
+    "static/js/2.b2658428.chunk.js.map": "/deposit-calculator/static/js/2.b2658428.chunk.js.map",
+    "index.html": "/deposit-calculator/index.html",
+    "static/js/2.b2658428.chunk.js.LICENSE.txt": "/deposit-calculator/static/js/2.b2658428.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7bab8b1d.js",
+    "static/js/2.b2658428.chunk.js",
+    "static/js/main.da66f688.chunk.js"
+  ]
+}
